@@ -24,19 +24,148 @@ int main() {
 
 ................................................................
 
+2.count uinque elements in array.
 
 
+#include <bits/stdc++.h>
+using namespace std;
 
+int main() {
+int n;
+cin>>n;
 
+vector<int>arr(n);
+unordered_set<int>st;
 
+for(int i=0;i<n;i++){
+    cin>>arr[i];
+    
+    st.insert(arr[i]);
+}
+ cout<<st.size();   
 
-
-
-
-
-
-
+}
 
 
 
 ............................................
+
+3. equilibrium point return index.
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+int n;
+cin>>n;
+
+vector<int>arr(n);
+for(int i=0;i<n;i++){
+    cin>>arr[i];
+}
+
+for(int j=0;j<n;j++){
+    int leftSum =0;
+    int rightSum =0;
+    
+    for(int k=j-1;k>=0;k--){
+        leftSum += arr[k];
+      
+    }
+    
+     
+    for(int k=j+1;k<n;k++){
+        rightSum  += arr[k];
+      
+    }
+    
+    if(leftSum == rightSum){
+       cout<<j;
+      return 0;
+       
+       
+    }
+         
+}
+
+
+cout<<-1;
+}
+------------------------------------------------------------
+
+
+
+4. shift 0 at the end of array without disturbing order;
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+int n;
+cin>>n;
+
+vector<int>arr(n);
+for(int i=0;i<n;i++){
+    cin>>arr[i];
+    
+}
+
+vector<int>result(n,0);
+
+int index =0;
+for(int i =0;i<n;i++){
+    if(arr[i]>0){
+        result[index++] = arr[i]; 
+    }
+}
+for(auto it:result){
+    cout<<it<<" ";
+}
+
+return 0;
+ 
+}
+
+----------------------------------------------------------------------------------------------
+
+5.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+int totalVehicle ;
+int totalWheel;
+
+cin>>totalVehicle>>totalWheel;
+
+if(totalWheel%2 !=0  ||  totalWheel < 2* totalVehicle ||totalWheel>4*totalVehicle ){
+    cout<<"Invalid Count";
+    return 0;
+}
+
+int tw,fw;
+
+
+fw = (totalWheel-2*totalVehicle)/2;
+tw = totalVehicle-fw;
+
+if(tw<0 || fw<0){
+    cout<<"invalid inputs";
+    
+}else{
+    cout<<tw<<endl;
+    cout<<fw;
+}
+return 0;
+
+ 
+}
+
+
+
+
+
+

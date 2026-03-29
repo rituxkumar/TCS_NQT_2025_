@@ -165,6 +165,154 @@ return 0;
 }
 
 
+------------------------------------------------------------------------------------------------------------
+
+6.
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+string input;
+getline(cin,input);
+stringstream ss(input);
+
+int x;
+unordered_map<int,int>freq;
+vector<int>arr;
+while(ss>>x){
+    arr.push_back(x);
+    freq[x]++;
+    
+}
+ vector<int>result;
+  for(auto it:freq){
+      if(it.second >= 2){
+          result.push_back(it.first);
+      }
+  }
+  
+  sort(result.begin(),result.end());
+  
+  
+  for(auto num:result){
+      cout<<num<<" ";
+  }
+
+return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------
+7.
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int fact(int n){
+    if(n==1)
+    return 1;
+    
+    return n*fact(n-1);
+}
+
+
+int main() {
+
+
+int people;
+int seat ;
+cin>>people>>seat;
+
+
+int res = fact(people)/fact(people-seat);
+cout<<res;
+
+
+return 0;
+}
+
+----------------------------------------------------------------------------------------------------------------
+8.
+
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    
+string input;
+getline(cin,input);
+stringstream ss(input);
+
+int x;
+vector<int>arr;
+
+while(ss>>x){
+    arr.push_back(x);
+}
+
+  int maxi = arr[0];
+  
+  for(int i =0; i<arr.size();i++){
+      int sum =0;
+      for(int j =i;j<arr.size();j++) {
+           sum += arr[j];
+      } 
+      maxi = max(maxi,sum);
+  }
+  
+  cout<<maxi;
+  
+
+}
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+9.
+
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    
+string input;
+getline(cin,input);
+stringstream ss(input);
+
+int x;
+vector<int>arr;
+
+while(ss>>x){
+    arr.push_back(x);
+}
+
+
+
+
+int n = arr.size();
+int sum =0;
+for(int i =0;i<n;i++){
+    sum = (sum +arr[i]);
+}
+int mean = sum/n;
+cout<<mean<<" ";
+
+
+
+sort(arr.begin(),arr.end());
+
+int median;
+if(n%2==1){
+    median = arr[n/2];
+}else{
+    median = (arr[n/2-1]+arr[n/2])/2.0;
+}
+
+cout<<median;
+
+
+  
+
+}
+-------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 

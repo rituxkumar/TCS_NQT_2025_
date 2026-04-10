@@ -779,6 +779,275 @@ int main() {
 24.
 
 
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector < int > vec(n);
+
+    for (int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+    int maxi = INT_MIN;
+
+    int mini = INT_MAX;
+    int big = 0;
+    int small = 0;
+
+    unordered_map < int, int > mp;
+
+    for (auto it: vec) {
+        mp[it]++;
+    }
+
+    for (auto it: mp) {
+
+        if (it.second > maxi) {
+            maxi = it.second;
+            big = it.first;
+        }
+        if (it.second < mini) {
+            mini = it.second;
+            small = it.first;
+        }
+
+    }
+
+
+
+    cout << big << " " << small;
+
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+25.
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector < int > vec(n);
+    for (int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    unordered_map < int, int > mp;
+    unordered_map < int, int > index;
+
+    //  frequncy + first index;
+
+
+    for (int i = 0; i < n; i++) {
+        mp[vec[i]]++;
+
+        if (index.find(vec[i]) == index.end()) {
+            index[vec[i]] = i;
+        }
+    }
+
+    // custom sort;
+
+    vector < int > temp = vec;
+
+    sort(temp.begin(), temp.end(), [ & ](int a, int b) {
+        if (mp[a] != mp[b]) {
+            return mp[a] < mp[b];
+        } else {
+            return index[a] < index[b];
+        }
+
+    });
+
+
+    // print 
+
+    for (auto it: temp) {
+        cout << it << " ";
+    }
+
+    int key;
+    cin >> key;
+
+    for (int i = 0; i < n; i++) {
+        if (key == vec[i]) {
+            cout << i;
+            return 0;
+            
+        }
+    }
+    cout << -1;
+    
+ 
+
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+26.
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+   int n;
+   cin>>n;
+   
+   vector<int>vec(n);
+   
+   for(int i=0;i<n;i++){
+       cin>>vec[i];
+   }
+   
+   unordered_set<int>st;
+   for(auto it:vec){
+       st.insert(it);
+       
+   }
+   
+   cout<<n-st.size();
+
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+ 27..
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+   int n;
+   cin>>n;
+   
+   vector<int>vec(n);
+   
+   for(int i=0;i<n;i++){
+       cin>>vec[i];
+   }
+   
+   unordered_map<int,int>mp;
+   for(auto it:vec){
+       mp[it]++;
+       
+   }
+   int res = 0 ; 
+   for(auto it : mp){
+       res+= it.second-1;
+   }
+   
+   cout << res;
+   
+  
+
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+28.
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+bool isPrime(int num) {
+    for (int i = 2; i <= sqrt(num); i++) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+
+}
+
+int Digit(int num) {
+    while (num >= 10) {
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num = num / 10;
+        }
+        num = sum;
+    }
+    return num;
+}
+
+
+int main() {
+
+    int m;
+    cin >> m;
+    int num = 2;
+    int count = 0;
+    int prime;
+    while (count < m) {
+        if (isPrime(num)) {
+            count++;
+          
+            prime = num;
+        }
+        num++;
+
+
+    }
+
+    cout << prime << endl;
+    cout << prime * Digit(prime);
+
+}
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+29.
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int size;
+    cin >> size;
+    vector < int > vec(n);
+
+    for (int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    if (size > vec.size()) {
+        cout << "invalid";
+        return 0;
+    }
+
+    sort(vec.begin(), vec.end());
+
+    int maxi = 0;
+    for (int i = 0; i < n; i += size) {
+        int diff = vec[i + size - 1] - vec[i];
+        maxi = max(maxi, diff);
+
+    }
+    cout << maxi;
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
